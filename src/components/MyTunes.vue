@@ -13,6 +13,8 @@
                         <source :src="song.preview" type="audio/mp4" />
                     </audio>
                     <button @click="deleteSong">Delete Song</button>
+                    <button @click="upVote">Up</button>
+                    <button @click="downVote">Down</button>
                 </div>
             </div>
         </div>
@@ -36,9 +38,16 @@
         methods: {
             deleteSong: function (song) {
                 myTunesService.removeTrack(song)
+            },
+            upVote: function (song) {
+                myTunesService.promoteTrack(song)
+            },
+            downVote: function (song) {
+                myTunesService.demoteTrack(song)
             }
 
-        }
+        },
+
     }
 
 </script>

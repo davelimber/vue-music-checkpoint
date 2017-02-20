@@ -28,9 +28,11 @@ export default {
 
   },
   addTrack(track) {
-
+track.added = true
+track.vote = 0
     Vue.set(myTunes, track.id, track)
     saveMytunes(track)
+    console.log('in addtrack' + track)
 
   },
   // addTrack(track) {
@@ -45,8 +47,16 @@ export default {
     Vue.delete(myTunes, track.trackId)
     saveMytunes()
   },
-  promoteTrack() { },
-  demoteTrack() { }
+  promoteTrack(track) { 
+track.vote += 1
+saveMytunes(track)
+
+  },
+  demoteTrack(track) { 
+track.vote -= 1
+saveMytunes(track)
+
+  }
 }
 
   // OCCASIONALLY YOU WILL RUN INTO ISSUES WHERE VUE WILL BE

@@ -41,12 +41,12 @@
     display: inline-block;
     min-height: 500px;
     min-width: 50%;
-    background: purple;
+    background: white;
   }
   
   .itunes {
     display: inline-block;
-    background: pink;
+    background: antiquewhite;
     min-height: 500px;
     min-width: 50%;
   }
