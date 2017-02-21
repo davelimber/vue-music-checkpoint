@@ -6,7 +6,7 @@
         <button type="submit" @click="getMusic">Search</button>
      
          
-                <div v-for="(song, index) in searchResults">
+                <div v-for="(song, index) in searchResults" :key="song">
                     <div class="card-stacked">
                         <div class="card-content">
                             <p> {{song.title}} </p>
@@ -14,7 +14,7 @@
                             <audio controls preload="none">
                                 <source :src="song.preview" type="audio/mp4" />
                             </audio>
-                            <button @click="addMusic(song)">Add Song</button> {{song.title}}
+                            <button @click="addMusic(index, song)">Add Song</button> {{song.title}}
                         </div>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                         var songList = response.results.map(function (song) {
                             return {
                                 title: song.trackName,
-                                albumArt: song.artworkUrl60,
+                             albumArt: song.artworkUrl60,
                                 artist: song.artistName,
                                 collection: song.collectionName,
                                 price: song.collectionPrice,
@@ -58,11 +58,14 @@
                     })
             },
 
-            addMusic(song) {
+            addMusic(index, song) {
                 var vm = this
-                console.log('this is the add of userselection' + song)
-                vm.userSelection = song
-                console.log('this is usersel' + vm.userSelection)
+                console.log('this is the add of userselection')
+                vm.userSelection = vm.searchResults[index]
+                vm.userSelection.vote = 1
+              
+                console.log('above user sel ')
+                console.log(vm.userSelection)
                 myTunesService.addTrack(song)
                 console.log('music added')
                 myTunesService.getTracks()
