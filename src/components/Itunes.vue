@@ -62,11 +62,8 @@
             addMusic(index, song) {
                 var vm = this
                 console.log('this is the add of userselection')
-                vm.userSelection = vm.searchResults[index]
-                vm.userSelection.vote = 0
-               
-                console.log('above user sel ')
-                console.log(vm.userSelection)
+                song.vote = 0
+                console.log(song)
                 myTunesService.addTrack(song)
                 console.log('music added')
                 myTunesService.getTracks()
