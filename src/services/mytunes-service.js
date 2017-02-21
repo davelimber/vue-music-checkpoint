@@ -1,13 +1,23 @@
 import Vue from 'vue'
 
-let myTunes = {}
+let myTunes = []
 let myLibrary = []
+let testing = []
 
 function saveMyLib(song) {
   myLibrary.push(song)
+  console.log('myLibrary')
   console.log(myLibrary)
+  var x = JSON.stringify(myLibrary)
+  console.log('this is x ')
+  console.log(x)
+  testing.push(myLibrary)
+  saveMytunes()
+
+  console.log('testing')
+  console.log(myTunes)
 }
-  
+
 
 function saveMytunes() {
   localStorage.setItem('myTunes', JSON.stringify(myTunes))
@@ -37,29 +47,27 @@ export default {
     var vm = this
     // track.added = true
     // track.vote = 0
-
     Vue.set(myTunes, track.id, track)
     saveMyLib(track)
-    
-    saveMytunes(this.myLibrary)
+
+
     console.log('in addTrack')
-    console.log(this.myLibrary)
 
   },
   removeTrack(track) {
-    Vue.delete(myTunes, track.trackId)
+    Vue.delete(myTunes, track.id)
     saveMytunes()
   },
   promoteTrack(track) {
     track.vote += 1
     Vue.set(myTunes, track.id, track)
-    saveMytunes(track)
+    saveMytunes()
 
   },
   demoteTrack(track) {
     track.vote -= 1
     Vue.set(myTunes, track.id, track)
-    saveMytunes(track)
+    saveMytunes()
 
   }
 }
