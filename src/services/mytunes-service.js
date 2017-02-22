@@ -1,17 +1,19 @@
 import Vue from 'vue'
 
-let myTunes = []
+let myTunes = {}
 let myLibrary = []
 let testing = []
 
 function saveMyLib(song) {
-  myLibrary.push(song)
-  console.log('myLibrary')
-  console.log(myLibrary)
-  var x = JSON.stringify(myLibrary)
-  console.log('this is x ')
-  console.log(x)
-  testing.push(myLibrary)
+console.log(myTunes)
+
+  // myLibrary.push(song)
+  // console.log('myLibrary')
+  // console.log(myLibrary)
+  // var x = JSON.stringify(myLibrary)
+  // console.log('this is x ')
+  // console.log(x)
+  // testing.push(myLibrary)
   saveMytunes()
 
   console.log('testing')
@@ -47,26 +49,30 @@ export default {
     var vm = this
     // track.added = true
     // track.vote = 0
-    Vue.set(myTunes, track.id, track)
-    saveMyLib(track)
+    Vue.set(myTunes, track.track, track)
+    saveMytunes()
 
 
     console.log('in addTrack')
 
   },
   removeTrack(track) {
-    Vue.delete(myTunes, track.id)
+    console.log('starting on removeTrack')
+    console.log(track)
+    Vue.delete(myTunes, track.track)
     saveMytunes()
+    loadMytunes()
+    
   },
   promoteTrack(track) {
     track.vote += 1
-    Vue.set(myTunes, track.id, track)
+    Vue.set(myTunes, track.track, track)
     saveMytunes()
 
   },
   demoteTrack(track) {
     track.vote -= 1
-    Vue.set(myTunes, track.id, track)
+    Vue.set(myTunes, track.track, track)
     saveMytunes()
 
   }

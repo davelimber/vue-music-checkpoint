@@ -27,9 +27,11 @@
 <script>
     import myTunesService from '../services/mytunes-service'
     import itunesService from '../services/itunes-service'
+    import myTunes from './MyTunes'
 
     export default {
         name: 'itunes',
+      
         data() {
             return {
                 userSearch: '',
