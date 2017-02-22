@@ -4,22 +4,24 @@
 
         <input type="text" v-model="userSearch" v-on:keyup.enter="getMusic" placeholder="enter artist or song">
         <button type="submit" @click="getMusic">Search</button>
-     
-         
-                <div v-for="(song, index) in searchResults">
-                    <div class="card-stacked">
-                        <div class="card-content">
-                            <p> {{song.title}} </p>
-                            <p> {{song.artist}} </p>
-                            <audio controls preload="none">
-                                <source :src="song.preview" type="audio/mp4" />
-                            </audio>
-                            <button @click="addMusic(song)">Add Song</button> {{song.title}}
-                        </div>
-                    </div>
+
+
+        <div v-for="(song, index) in searchResults" :key="song">
+            <div class="card-stacked">
+                <div class="card-content">
+                    <p> {{song.title}} </p>
+                    <p> {{song.artist}} </p>
+                    <audio controls preload="none">
+                        <source :src="song.preview" type="audio/mp4" />
+                    </audio>
+
+                    <button @click="addMusic(index, song)">Add Song</button> {{song.title}}
                 </div>
-           
-        
+            </div>
+        </div>
+    </div>
+
+
     </div>
 
 </template>
@@ -30,6 +32,7 @@
 
     export default {
         name: 'itunes',
+
         data() {
             return {
                 userSearch: '',
@@ -46,6 +49,7 @@
                     .then(function (response) {
                         var songList = response.results.map(function (song) {
                             return {
+                                track: song.trackId,
                                 title: song.trackName,
                                 albumArt: song.artworkUrl60,
                                 artist: song.artistName,
@@ -58,13 +62,9 @@
                     })
             },
 
-            addMusic(song) {
-                var vm = this
-                console.log('this is the add of userselection' + song)
-                vm.userSelection = song
-                console.log('this is usersel' + vm.userSelection)
+            addMusic(index, song) {
+                song.vote = 0
                 myTunesService.addTrack(song)
-                console.log('music added')
                 myTunesService.getTracks()
             }
         },
