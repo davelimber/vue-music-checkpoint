@@ -4,11 +4,11 @@
       <div class="col m6">
         <iTunes class="itunes"> </iTunes>
       </div>
-      <div class="col m6">
-        <myTunes class="mytunes"> </myTunes>
+      <myTunes class="mytunes">
+        <div class="col m6">
+      </myTunes>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -19,9 +19,15 @@
 
   export default {
     name: 'home',
-    components: { iTunes, myTunes },
+    components: { iTunes, myTunes},
     data() {
       return {
+        lastUpdate: Date.now()
+      }
+    },
+    methods: {
+      updateData() {
+        this.lastUpdate = Date.now()
       }
     }
   }
