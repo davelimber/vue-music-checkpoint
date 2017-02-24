@@ -1,0 +1,40 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+body {
+  padding-top: 20px;
+  background: url('http://hyperallergic.com/wp-content/uploads/2015/11/The_Sounds_of_Earth_Record_Cover_-_GPN-2000-001978.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+}
+.mytunes {
+  display: inline-block;
+  min-height: 500px;
+  min-width: 50%;
+  background: white;
+}
+.itunes {
+  display: inline-block;
+  background: antiquewhite;
+  min-height: 500px;
+  min-width: 50%;
+}
+
+/*# sourceMappingURL=app.b52b3ef0fdde7b6913b3984ecd1cadcc.css.map*/
