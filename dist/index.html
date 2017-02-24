@@ -1,0 +1,20 @@
+<!DOCTYPE html><html><head><meta charset=utf-8><title>My Tracks</title><script src=https://code.jquery.com/jquery-2.2.3.min.js></script><script src=https://unpkg.com/vue/dist/vue.js></script><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css><script src=https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js></script><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel=stylesheet><link href=/static/css/app.b52b3ef0fdde7b6913b3984ecd1cadcc.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=/static/js/manifest.7d6f53dedeeee1d6c593.js></script><script type=text/javascript src=/static/js/vendor.495861b2096003e5a375.js></script><script type=text/javascript src=/static/js/app.4cc326a87c8bbe35868d.js></script></body><script>document.addEventListener('play', function (e) {
+    var audios = document.getElementsByTagName('audio');
+    for (var i = 0, len = audios.length; i < len; i++) {
+      if (audios[i] != e.target) {
+        audios[i].pause();
+      }
+    }
+  }, true);
+
+  var isPlaying = false;
+  this.ac = function (id) {
+    var song = document.getElementById(id);
+    if (isPlaying) {
+      song.pause();
+      isPlaying = false;
+    } else {
+      song.play();
+      isPlaying = true;
+    }
+  }</script></html>

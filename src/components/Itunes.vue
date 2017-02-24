@@ -14,10 +14,12 @@
                     <audio controls preload="none">
                         <source :src="song.preview" type="audio/mp4" />
                     </audio>
+
                     <button @click="addMusic(index, song)">Add Song</button> {{song.title}}
                 </div>
             </div>
         </div>
+    </div>
 
 
     </div>
@@ -27,11 +29,10 @@
 <script>
     import myTunesService from '../services/mytunes-service'
     import itunesService from '../services/itunes-service'
-    import myTunes from './MyTunes'
 
     export default {
         name: 'itunes',
-      
+
         data() {
             return {
                 userSearch: '',
@@ -62,12 +63,8 @@
             },
 
             addMusic(index, song) {
-                var vm = this
-                console.log('this is the add of userselection')
                 song.vote = 0
-                console.log(song)
                 myTunesService.addTrack(song)
-                console.log('music added')
                 myTunesService.getTracks()
             }
         },

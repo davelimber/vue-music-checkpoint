@@ -7,14 +7,15 @@
         <div v-for="(song, index) in userSongs">
             <div class="card-stacked">
                 <div class="card-content">
-                    <p> {{song.title}} </p>
-                    <p> {{song.artist}} </p>
+                    <p> Title: {{song.title}} </p>
+                    <p> Artist: {{song.artist}} </p>
+                    <p> Vote: {{song.vote}} </p>
                     <audio controls preload="none">
                         <source :src="song.preview" type="audio/mp4" />
                     </audio>
                     <button @click="deleteSong(song)">Delete Song</button>
-                    <button @click="upVote">Up</button>
-                    <button @click="downVote">Down</button>
+                    <button @click="upVote(song)">Up</button>
+                    <button @click="downVote(song)">Down</button>
                 </div>
             </div>
         </div>
@@ -31,19 +32,19 @@
 
     export default {
         name: 'mytunes',
+        // props: [song],
               data() {
             return {
-               
+               userSongs: {}
             }
         },
-        // computed: {
-        //     userSongs: function () {
-        //         this.userSongs = myTunesService.getTracks()
-        //     }
-        // },
+        mounted(){
+                this.userSongs = myTunesService.getTracks()
+        },
         methods: {
             deleteSong: function (song) {
                 myTunesService.removeTrack(song)
+                this.$parent.updateData()
             },
             upVote: function (song) {
                 myTunesService.promoteTrack(song)
@@ -54,9 +55,6 @@
 
         },
 
-    }
-    function getSongs() {
-        console.log('in mytunes')
     }
 
 </script>
