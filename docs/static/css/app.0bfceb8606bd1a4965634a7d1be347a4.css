@@ -20,7 +20,7 @@
 
 body {
   padding-top: 20px;
-  background: url('https://hyperallergic.com/wp-content/uploads/2015/11/The_Sounds_of_Earth_Record_Cover_-_GPN-2000-001978.jpg');
+  background: url(/static/img/earth-record-sm.b33d721.jpg);
   background-size: cover;
   background-attachment: fixed;
 }
@@ -38,4 +38,4 @@ body {
   color: black
 }
 
-/*# sourceMappingURL=app.fdbda7a1f0c39fa8e0bfd3ea62fceb5a.css.map*/
+/*# sourceMappingURL=app.0bfceb8606bd1a4965634a7d1be347a4.css.map*/
