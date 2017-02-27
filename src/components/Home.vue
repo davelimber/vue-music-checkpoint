@@ -48,6 +48,7 @@
     min-height: 500px;
     min-width: 50%;
     background: white;
+
   }
   
   .itunes {
@@ -55,5 +56,6 @@
     background: antiquewhite;
     min-height: 500px;
     min-width: 50%;
+    color: black
   }
 </style>
