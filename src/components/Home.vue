@@ -38,7 +38,7 @@
 <style>
   body {
     padding-top: 20px;
-    background: url('https://hyperallergic.com/wp-content/uploads/2015/11/The_Sounds_of_Earth_Record_Cover_-_GPN-2000-001978.jpg');
+    background: url('../assets/earth-record-sm.jpg');
     background-size: cover;
     background-attachment: fixed;
   }

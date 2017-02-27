@@ -62,6 +62,7 @@
                     })
             },
             addMusic(song) {
+                console.log(song)
                 if (myTunesService.checkTrack(song) === false) {
                     myTunesService.addTrack(song)
                 }
