@@ -32,29 +32,27 @@
 
     export default {
         name: 'mytunes',
-        // props: [song],
-              data() {
+        data() {
             return {
-               userSongs: {}
+                userSongs: myTunesService.getTracks()
             }
         },
-        mounted(){
-                this.userSongs = myTunesService.getTracks()
-        },
+        // mounted(){
+        //         this.userSongs = myTunesService.getTracks()
+        // },
         methods: {
             deleteSong: function (song) {
                 myTunesService.removeTrack(song)
-                this.$parent.updateData()
+                
             },
             upVote: function (song) {
                 myTunesService.promoteTrack(song)
+                myTunesService.sortTunes();
             },
             downVote: function (song) {
                 myTunesService.demoteTrack(song)
             },
-
         },
-
     }
 
 </script>
