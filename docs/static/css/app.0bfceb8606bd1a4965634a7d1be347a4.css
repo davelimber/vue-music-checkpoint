@@ -20,7 +20,7 @@
 
 body {
   padding-top: 20px;
-  background: url(../img/earth-record-sm.b33d721.jpg);
+  background: url(static/img/earth-record-sm.b33d721.jpg);
   background-size: cover;
   background-attachment: fixed;
 }
